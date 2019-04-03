@@ -6,17 +6,13 @@
     android:layout_height="match_parent" >
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <!--    Toolbar 重写 Actionbar   -->
+        android:layout_height="wrap_content" >
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:title="Project Log"
-            app:titleTextColor="@android:color/white"
-            app:subtitle="ToolBar 的副标题"
-            app:subtitleTextColor="@android:color/white" >
-        </androidx.appcompat.widget.Toolbar>
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </com.google.android.material.appbar.AppBarLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
