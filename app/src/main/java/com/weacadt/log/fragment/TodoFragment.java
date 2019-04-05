@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodoFragment extends Fragment {
     RecyclerView recyclerView;
-    private List<Test> testList = new ArrayList<Test>();
+    private List<Test> testList = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

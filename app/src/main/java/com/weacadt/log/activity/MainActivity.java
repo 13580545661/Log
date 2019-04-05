@@ -5,6 +5,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.weacadt.log.R;
 import com.weacadt.log.fragment.CalendarFragment;
@@ -26,13 +27,16 @@ import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
-    //声明抽屉对象
+    //抽屉
     private DrawerLayout mDrawerLayout;
 
-    //声明 ViewPager 相关
+    //ViewPager
     private ViewPager mViewPager;
     private List<Fragment> fragmentList;
     private FragmentPagerAdapter fpAdapter;
+
+    //底部导航栏
+    private BottomNavigationView mBottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +44,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initData();
-        initView();
-
-        //设置 ViewPager Adapter
-        mViewPager.setAdapter(fpAdapter);
+        initTopView();
+        initMiddleView();
+        initBottomView();
     }
 
     private void initData() {
@@ -60,7 +63,9 @@ public class MainActivity extends AppCompatActivity {
         };
 
     }
-    private void initView() {
+
+    /*  初始化 ToolBar，抽屉，侧滑栏  */
+    private void initTopView() {
         //ToolBar
         Toolbar toolbar = findViewById(R.id.toolbar_main);
 
@@ -74,45 +79,51 @@ public class MainActivity extends AppCompatActivity {
             //actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer_menu); //抽屉按钮的图标（不设置默认为返回图标）
         }
 
-        //抽屉布局及侧滑栏 声明
+        //抽屉布局及侧滑栏
         mDrawerLayout = findViewById(R.id.layout_drawer);
-        NavigationView mNavView = findViewById(R.id.nav_view);
 
         //侧滑栏
+        NavigationView mNavView = findViewById(R.id.nav_view);
         mNavView.setCheckedItem(R.id.home); //侧滑栏默认选中的选项
-        mNavView.setNavigationItemSelectedListener(navItemSelectedListener);    //侧滑栏的点击事件
-
+        mNavView.setNavigationItemSelectedListener(mNavItemSelectedListener);    //侧滑栏的点击事件
+    }
+    private void initMiddleView() {
         //Fragment 声明及构造
         TodoFragment mTodoFragment = new TodoFragment();
         DiaryFragment mDiaryFragment = new DiaryFragment();
         CalendarFragment mCalendarFragment = new CalendarFragment();
 
-        fragmentList = new ArrayList<Fragment>();
-
         //ViewPager 构造
         mViewPager = findViewById(R.id.view_pager);
+        mViewPager.addOnPageChangeListener(pageChangeListener);
+        mViewPager.setAdapter(fpAdapter);
 
+        //Fragment List
+        fragmentList = new ArrayList<>();
         fragmentList.add(mTodoFragment);
         fragmentList.add(mDiaryFragment);
         fragmentList.add(mCalendarFragment);
-
-        mViewPager.addOnPageChangeListener(pageChangeListener);
     }
 
+    private void initBottomView() {
+        //底部导航栏
+        mBottomNavigationView = findViewById(R.id.view_bottom_navigation);
+        mBottomNavigationView.setOnNavigationItemSelectedListener(mOnBottomNavItemSelectedListener);
+    }
     /*  ToolBar 右边菜单创建    */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);   //加载 toolbar_menu
         return true;
     }
 
-    /*  ToolBar 右边菜单选择    */
+    /*  ToolBar 右边菜单点击事件    */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case android.R.id.home: //点击抽屉按钮打开抽屉
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
             case R.id.none:
-                AboutActivity.actionStart(MainActivity.this);
+                Toast.makeText(this, "Click None", Toast.LENGTH_LONG).show();
                 break;
             case R.id.none2:
                 Toast.makeText(this, "Click None2", Toast.LENGTH_LONG).show();
@@ -122,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    /*  ViewPager   */
+    /*  ViewPager 点击事件   */
     private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i1) {
@@ -133,13 +144,13 @@ public class MainActivity extends AppCompatActivity {
         public void onPageSelected(int i) {
             switch (i){
                 case 0:
-                    //mNavView.setSelectedItemId(R.id.bottom_nav_todo);
+                    mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_todo);
                     break;
                 case 1:
-                    //mNavView.setSelectedItemId(R.id.bottom_nav_diary);
+                    mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_diary);
                     break;
                 case 2:
-                    //mNavView.setSelectedItemId(R.id.bottom_nav_calendar);
+                    mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_calendar);
                     break;
             }
         }
@@ -150,27 +161,48 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    /*  抽屉选项    */
-    private NavigationView.OnNavigationItemSelectedListener navItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
+    /*  抽屉点击事件    */
+    private NavigationView.OnNavigationItemSelectedListener mNavItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()) {
                 case R.id.home:
-                    Toast.makeText(MainActivity.this, "你点了主页", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Click Home", Toast.LENGTH_SHORT).show();
                     mDrawerLayout.closeDrawers();
-                    break;
+                    return true;
                 case R.id.setting:
-                    Toast.makeText(MainActivity.this, "你点了设置", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Click Setting", Toast.LENGTH_SHORT).show();
                     mDrawerLayout.closeDrawers();
-                    break;
+                    return true;
                 case R.id.about:
-                    Toast.makeText(MainActivity.this, "你点了关于", Toast.LENGTH_SHORT).show();
                     AboutActivity.actionStart(MainActivity.this);
-                    break;
+                    mDrawerLayout.closeDrawers();
+                    return true;
             }
-            return true;
+            return false;
         }
     };
+
+    /*  底部导航栏点击事件*/
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnBottomNavItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.bottom_nav_todo:
+                    mViewPager.setCurrentItem(0);
+                    return true;
+                case R.id.bottom_nav_diary:
+                    mViewPager.setCurrentItem(1);
+                    return true;
+                case R.id.bottom_nav_calendar:
+                    mViewPager.setCurrentItem(2);
+                    return true;
+            }
+            return false;
+        }
+
+    };
+
 }
 
 
