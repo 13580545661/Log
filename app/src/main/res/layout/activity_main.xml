@@ -41,7 +41,7 @@
             android:layout_below="@id/cdl"/>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab1"
+            android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@id/view_bottom_navigation"
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="?android:attr/windowBackground"
-            app:menu="@menu/bottom_nav" />
+            app:menu="@menu/bottom_nav_menu" />
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

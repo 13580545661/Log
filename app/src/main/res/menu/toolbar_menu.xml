@@ -9,6 +9,6 @@
 
     <item
         android:id="@+id/none2"
-        android:title="none"
+        android:title="none2"
         app:showAsAction="never"/>
 </menu>
