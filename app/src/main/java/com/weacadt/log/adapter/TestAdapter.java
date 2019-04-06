@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import com.weacadt.log.R;
 import com.weacadt.log.data.Test;
@@ -34,7 +35,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         Test test = myTestList.get(i);
-        viewHolder.checkBox.setText(test.getTodoThing());
+        viewHolder.textView.setText(test.getTodoThing());
         viewHolder.checkBox.setChecked(test.isDone());
 
     }
@@ -46,9 +47,11 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox;
+        TextView textView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             checkBox = itemView.findViewById(R.id.item_checkbox);
+            textView = itemView.findViewById(R.id.item_textview);
         }
     }
 }

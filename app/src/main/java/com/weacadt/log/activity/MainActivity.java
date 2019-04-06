@@ -3,9 +3,11 @@ package com.weacadt.log.activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.weacadt.log.R;
 import com.weacadt.log.fragment.CalendarFragment;
@@ -26,7 +28,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //抽屉
     private DrawerLayout mDrawerLayout;
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 
     //底部导航栏
     private BottomNavigationView mBottomNavigationView;
+
+    //悬浮按钮
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +116,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initBottomView() {
+        //悬浮按钮
+        fab = findViewById(R.id.fab);
+        fab.setOnClickListener(this);
+
+
         //底部导航栏
         mBottomNavigationView = findViewById(R.id.view_bottom_navigation);
         mBottomNavigationView.setOnNavigationItemSelectedListener(mOnBottomNavItemSelectedListener);
@@ -150,12 +160,20 @@ public class MainActivity extends AppCompatActivity {
             switch (i){
                 case 0:
                     mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_todo);
+                    if (!fab.isShown()) {
+                        Toast.makeText(MainActivity.this, "fab is not shown", Toast.LENGTH_LONG).show();
+                        fab.show();
+                    }
                     break;
                 case 1:
                     mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_diary);
+                    if (!fab.isShown()){
+                        fab.show();
+                    }
                     break;
                 case 2:
                     mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_calendar);
+                    fab.hide();
                     break;
             }
         }
@@ -208,6 +226,18 @@ public class MainActivity extends AppCompatActivity {
 
     };
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab:
+                if (mViewPager.getCurrentItem() == 0) {
+                    Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();
+                }else if (mViewPager.getCurrentItem() == 1) {
+                    Toast.makeText(this, "你从日记点击了fab按钮", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
 }
 
 
