@@ -10,12 +10,13 @@ import android.widget.TextView;
 import com.weacadt.log.R;
 import com.weacadt.log.data.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
+public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> implements ItemTouchHelperAdapter{
 
     private List<Test> myTestList;
 
@@ -45,7 +46,19 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> {
         return myTestList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    //ItemTouchHelperAdapter的接口实现
+    @Override
+    public void onItemMove(int fromPosition, int toPosition) {
+        Collections.swap(myTestList, fromPosition, toPosition);
+        notifyItemMoved(fromPosition, toPosition);
+    }
+    @Override
+    public void onItemDissmiss(int position) {
+        myTestList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox;
         TextView textView;
         public ViewHolder(@NonNull View itemView) {
