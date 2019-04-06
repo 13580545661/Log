@@ -17,6 +17,7 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -47,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         initTopView();
         initMiddleView();
         initBottomView();
+
+        mViewPager.setAdapter(fpAdapter);
     }
 
     private void initData() {
@@ -81,10 +84,13 @@ public class MainActivity extends AppCompatActivity {
 
         //抽屉布局及侧滑栏
         mDrawerLayout = findViewById(R.id.layout_drawer);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         //侧滑栏
         NavigationView mNavView = findViewById(R.id.nav_view);
-        mNavView.setCheckedItem(R.id.home); //侧滑栏默认选中的选项
+        //mNavView.setCheckedItem(R.id.home); //侧滑栏默认选中的选项
         mNavView.setNavigationItemSelectedListener(mNavItemSelectedListener);    //侧滑栏的点击事件
     }
     private void initMiddleView() {
@@ -96,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         //ViewPager 构造
         mViewPager = findViewById(R.id.view_pager);
         mViewPager.addOnPageChangeListener(pageChangeListener);
-        mViewPager.setAdapter(fpAdapter);
 
         //Fragment List
         fragmentList = new ArrayList<>();

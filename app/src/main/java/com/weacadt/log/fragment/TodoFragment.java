@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.weacadt.log.R;
-import com.weacadt.log.adapter.Test;
+import com.weacadt.log.data.Test;
 import com.weacadt.log.adapter.TestAdapter;
 
 import java.util.ArrayList;
@@ -18,13 +18,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 public class TodoFragment extends Fragment {
     RecyclerView recyclerView;
-    private List<Test> testList = new ArrayList<>();
+    private List<Test> testList =new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initTestData();
+
     }
 
     @Nullable
@@ -37,9 +40,8 @@ public class TodoFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        initTestData();
-        initData();
         super.onActivityCreated(savedInstanceState);
+        initData();
     }
 
     private void initTestData() {
@@ -48,6 +50,7 @@ public class TodoFragment extends Fragment {
         testList.add(new Test("看动漫"));
         testList.add(new Test("洗衣服"));
         testList.add(new Test("做作业"));
+
     }
 
     private void initData() {
