@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Project Log</string>
+
+    <!--    抽屉   -->
+    <string name="navigation_drawer_open">打开抽屉</string>
+    <string name="navigation_drawer_close">关闭抽屉</string>
+
+    <!--    工具栏      -->
+    <string name="ab_today">今天</string>
+    <string name="ab_diary">日记</string>
+    <string name="ab_calendar">日历</string>
+
+    <!--    侧边栏     -->
+    <string name="nav_share">分享</string>
+    <string name="nav_setting">设置</string>
+    <string name="nav_about">关于</string>
+    <string name="bnav_todo">待办</string>
+    <string name="bnav_diary">日记</string>
+    <string name="bnav_calendar">日历</string>
+</resources>

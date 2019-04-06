@@ -4,4 +4,18 @@
     <!--    Navigation Drawer   -->
     <string name="navigation_drawer_open">Open drawer</string>
     <string name="navigation_drawer_close">Close drawer</string>
+
+    <!--    Action Bar      -->
+    <string name="ab_today">Today</string>
+    <string name="ab_diary">Diary</string>
+    <string name="ab_calendar">Calendar</string>
+
+    <string name="nav_share">Share</string>
+    <string name="nav_setting">Setting</string>
+    <string name="nav_about">About</string>
+
+    <!--    Bottom Navigation Button    -->
+    <string name="bnav_todo">To-Do</string>
+    <string name="bnav_diary">Diary</string>
+    <string name="bnav_calendar">Calendar</string>
 </resources>

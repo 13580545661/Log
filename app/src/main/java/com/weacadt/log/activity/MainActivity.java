@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -79,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //设置 ActionBar 为 ToolBar
         setSupportActionBar(toolbar);
+        //设置 ActionBar 的默认标题（“待办事项”）
+        getSupportActionBar().setTitle(R.string.ab_today);
 
         //获取 ActionBar 实例
         ActionBar actionBar = getSupportActionBar();
@@ -97,6 +100,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         NavigationView mNavView = findViewById(R.id.nav_view);
         //mNavView.setCheckedItem(R.id.home); //侧滑栏默认选中的选项
         mNavView.setNavigationItemSelectedListener(mNavItemSelectedListener);    //侧滑栏的点击事件
+
+        ViewGroup.LayoutParams params = mNavView.getLayoutParams();
+        params.width = getResources().getDisplayMetrics().widthPixels * 3 / 4;
+        mNavView.setLayoutParams(params);
+
     }
     private void initMiddleView() {
         //Fragment 声明及构造
@@ -116,22 +124,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initBottomView() {
+
         //悬浮按钮
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(this);
-
 
         //底部导航栏
         mBottomNavigationView = findViewById(R.id.view_bottom_navigation);
         mBottomNavigationView.setOnNavigationItemSelectedListener(mOnBottomNavItemSelectedListener);
     }
-    /*  ToolBar 右边菜单创建    */
+
+
+    /**
+     * 创建 Toolbar 菜单
+     * @param menu
+     * @return
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);   //加载 toolbar_menu
         return true;
     }
 
-    /*  ToolBar 右边菜单点击事件    */
+    /**
+     * Toolbar 菜单选择监听器
+     * @param item 所选的菜单项
+     * @return
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case android.R.id.home: //点击抽屉按钮打开抽屉
@@ -148,7 +166,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    /*  ViewPager 点击事件   */
+    /**
+     * ViewPager 视图切换监听器
+     */
     private ViewPager.OnPageChangeListener pageChangeListener = new ViewPager.OnPageChangeListener() {
         @Override
         public void onPageScrolled(int i, float v, int i1) {
@@ -164,16 +184,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, "fab is not shown", Toast.LENGTH_LONG).show();
                         fab.show();
                     }
+                    getSupportActionBar().setTitle(R.string.ab_today);
                     break;
                 case 1:
                     mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_diary);
                     if (!fab.isShown()){
                         fab.show();
                     }
+                    getSupportActionBar().setTitle(R.string.ab_diary);
                     break;
                 case 2:
                     mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_calendar);
                     fab.hide();
+                    getSupportActionBar().setTitle(R.string.ab_calendar);
                     break;
             }
         }
@@ -184,7 +207,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    /*  抽屉点击事件    */
+    /**
+     * 侧边栏选择监听器
+     */
     private NavigationView.OnNavigationItemSelectedListener mNavItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -206,7 +231,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     };
 
-    /*  底部导航栏点击事件*/
+    /**
+     * 底部导航选择监听器
+     */
     private BottomNavigationView.OnNavigationItemSelectedListener mOnBottomNavItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -226,6 +253,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     };
 
+    /**
+     * 点击监听器
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()){

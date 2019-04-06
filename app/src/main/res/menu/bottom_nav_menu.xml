@@ -3,14 +3,14 @@
     <item
         android:id="@+id/bottom_nav_todo"
         android:icon="@drawable/ic_check_circle_black_24dp"
-        android:title="Todo" />
+        android:title="@string/ab_today" />
     <item
         android:id="@+id/bottom_nav_diary"
         android:icon="@drawable/ic_class_black_24dp"
-        android:title="Diary" />
+        android:title="@string/ab_diary" />
 
     <item
         android:id="@+id/bottom_nav_calendar"
         android:icon="@drawable/ic_date_range_black_24dp"
-        android:title="Calendar" />
+        android:title="@string/ab_calendar" />
 </menu>
