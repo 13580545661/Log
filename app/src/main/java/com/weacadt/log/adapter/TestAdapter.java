@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 
 import com.weacadt.log.R;
+import com.weacadt.log.data.Test;
 
 import java.util.List;
 

@@ -47,13 +47,14 @@
             android:layout_above="@id/view_bottom_navigation"
             android:layout_alignParentEnd="true"
             android:layout_margin="16dp"
-            android:src="@mipmap/ic_launcher_round" />
+            android:src="@drawable/ic_add_circle_black_24dp" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/view_bottom_navigation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_alignParentBottom="true"
+            app:labelVisibilityMode="unlabeled"
             android:background="?android:attr/windowBackground"
             app:menu="@menu/bottom_nav_menu" />
     </RelativeLayout>
