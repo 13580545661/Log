@@ -15,6 +15,8 @@
     <string name="nav_share">分享</string>
     <string name="nav_setting">设置</string>
     <string name="nav_about">关于</string>
+
+    <!--    底部导航栏   -->
     <string name="bnav_todo">待办</string>
     <string name="bnav_diary">日记</string>
     <string name="bnav_calendar">日历</string>
