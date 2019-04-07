@@ -208,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     };
 
     /**
-     * 侧边栏选择监听器
+     * 侧滑栏选择监听器
      */
     private NavigationView.OnNavigationItemSelectedListener mNavItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
         @Override
