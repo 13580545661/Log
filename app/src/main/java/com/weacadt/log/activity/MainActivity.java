@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.weacadt.log.R;
+import com.weacadt.log.data.Test;
 import com.weacadt.log.fragment.CalendarFragment;
 import com.weacadt.log.fragment.DiaryFragment;
 import com.weacadt.log.fragment.TodoFragment;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //抽屉
     private DrawerLayout mDrawerLayout;
-
+    private TodoFragment mTodoFragment;
     //ViewPager
     private ViewPager mViewPager;
     private List<Fragment> fragmentList;
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     private void initMiddleView() {
         //Fragment 声明及构造
-        TodoFragment mTodoFragment = new TodoFragment();
+        mTodoFragment = new TodoFragment();
         DiaryFragment mDiaryFragment = new DiaryFragment();
         CalendarFragment mCalendarFragment = new CalendarFragment();
 
@@ -184,6 +185,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, "fab is not shown", Toast.LENGTH_LONG).show();
                         fab.show();
                     }
+
                     getSupportActionBar().setTitle(R.string.ab_today);
                     break;
                 case 1:
@@ -263,6 +265,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab:
                 if (mViewPager.getCurrentItem() == 0) {
                     Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();
+                    mTodoFragment.addItem(new Test("新项目"));
                 }else if (mViewPager.getCurrentItem() == 1) {
                     Toast.makeText(this, "你从日记点击了fab按钮", Toast.LENGTH_SHORT).show();
                 }

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.weacadt.log.R;
 import com.weacadt.log.data.Test;
 
+import org.w3c.dom.Text;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> implements ItemTouchHelperAdapter{
 
     private List<Test> myTestList;
+    
 
     public TestAdapter(List<Test> myTestList) {
         this.myTestList = myTestList;
@@ -49,7 +52,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> im
     //ItemTouchHelperAdapter的接口实现
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(myTestList, fromPosition, toPosition);
+        myTestList.add(toPosition, myTestList.remove(fromPosition));
         notifyItemMoved(fromPosition, toPosition);
     }
     @Override
@@ -66,5 +69,20 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> im
             checkBox = itemView.findViewById(R.id.item_checkbox);
             textView = itemView.findViewById(R.id.item_textview);
         }
+    }
+    
+    public void addItem(Test test) {
+        myTestList.add(test);
+        notifyItemInserted(myTestList.size());
+    }
+    
+    public void addItem(int position, Test test) {
+        myTestList.add(position, test);
+        notifyItemInserted(position);
+    }
+    
+    public void setItem(int position, Test test) {
+        myTestList.set(position, test);
+        notifyDataSetChanged();
     }
 }

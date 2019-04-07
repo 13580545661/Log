@@ -1,9 +1,12 @@
 package com.weacadt.log.data;
 
-import android.graphics.Color;
+import android.graphics.Canvas;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
-import com.weacadt.log.R;
 import com.weacadt.log.adapter.ItemTouchHelperAdapter;
+import com.weacadt.log.adapter.TestAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -45,29 +48,9 @@ public class ItemTouchHelperCallback extends ItemTouchHelper.Callback {
         return true;
     }
 
-    /**
-     * 选择时 item 改变选项
-     * @param viewHolder viewHolder
-     * @param actionState item 选择状态
-     */
-    @Override
-    public void onSelectedChanged(RecyclerView.ViewHolder viewHolder, int actionState) {
-        //判断选择状态，改变背景颜色
-        if (actionState != ItemTouchHelper.ACTION_STATE_IDLE) {
-            viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getContext().getResources().getColor(R.color.colorItemSelectedChanged));
-        }
-        super.onSelectedChanged(viewHolder, actionState);
-    }
 
-    /**
-     * item 背景颜色复原
-     */
-
-    @Override
-    public void clearView(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
-
-        viewHolder.itemView.setBackgroundColor(viewHolder.itemView.getContext().getResources().getColor(R.color.colorDefaultBackground));
-
-        super.clearView(recyclerView, viewHolder);
+    public int getSlideLimitation(RecyclerView.ViewHolder viewHolder) {
+        ViewGroup viewGroup = (ViewGroup) viewHolder.itemView;
+        return viewGroup.getChildAt(1).getLayoutParams().width;
     }
 }
