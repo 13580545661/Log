@@ -10,8 +10,6 @@ import com.weacadt.log.data.ItemTouchHelperCallback;
 import com.weacadt.log.data.Test;
 import com.weacadt.log.adapter.TestAdapter;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +37,6 @@ public class TodoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_todo, null);
-
         return view;
     }
 
@@ -62,7 +59,10 @@ public class TodoFragment extends Fragment {
         recyclerView = getActivity().findViewById(R.id.recycler_view_todo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TestAdapter(testList);
+        TestAdapter adapter = new TestAdapter(testList);
         recyclerView.setAdapter(adapter);
+
+        //ItemTouchHelper
         ItemTouchHelper.Callback callback = new ItemTouchHelperCallback(adapter);
         ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
         touchHelper.attachToRecyclerView(recyclerView);

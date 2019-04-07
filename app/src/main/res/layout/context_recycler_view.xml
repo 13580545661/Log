@@ -4,28 +4,28 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="#ffffff"
-    >
+    android:background="#ffffff">
+
     <CheckBox
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginStart="12dp"
         android:id="@+id/item_checkbox"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="12dp"
-        />
+        android:layout_gravity="center_vertical" />
 
     <TextView
         android:id="@+id/item_textview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:gravity="center_vertical"
         android:textColor="#262626"
         android:textSize="16sp" />
+
     <FrameLayout
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="4dp"
         android:background="#f33213">
 
@@ -37,5 +37,7 @@
             android:textSize="18sp"
             android:textColor="#ffffff"
             android:layout_gravity="center"/>
+
     </FrameLayout>
+
 </LinearLayout>

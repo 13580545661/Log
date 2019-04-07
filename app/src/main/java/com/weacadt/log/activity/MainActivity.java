@@ -138,11 +138,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 创建 Toolbar 菜单
-     * @param menu
+     * @param menu menu
      * @return
      */
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu, menu);   //加载 toolbar_menu
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);   //加载 toolbar_menu，即 toolbar 右边菜单
         return true;
     }
 
@@ -257,11 +257,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * 点击监听器
-     * @param v
+     * @param view view
      */
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    public void onClick(View view) {
+        int pager = mViewPager.getCurrentItem();
+        switch (view.getId()){
             case R.id.fab:
                 if (mViewPager.getCurrentItem() == 0) {
                     Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();

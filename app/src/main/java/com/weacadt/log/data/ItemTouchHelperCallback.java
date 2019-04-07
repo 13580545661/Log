@@ -1,12 +1,9 @@
 package com.weacadt.log.data;
 
-import android.graphics.Canvas;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 
+import com.weacadt.log.R;
 import com.weacadt.log.adapter.ItemTouchHelperAdapter;
-import com.weacadt.log.adapter.TestAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ItemTouchHelper;

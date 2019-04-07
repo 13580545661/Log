@@ -6,5 +6,8 @@
 
     <color name="colorDefaultBackground">#FAFAFA</color>
     <color name="colorBackground">#FFFFFF</color>
+    
     <color name="colorItemSelectedChanged">#BDBDBD</color>
+
+    <color name="colorFAB">#80CBC4</color>
 </resources>

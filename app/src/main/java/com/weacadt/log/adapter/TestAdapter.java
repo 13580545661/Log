@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.weacadt.log.R;
 import com.weacadt.log.data.Test;
 
-import org.w3c.dom.Text;
-
-import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -30,7 +27,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> im
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_test, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.context_recycler_view, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
 
         return holder;
@@ -49,12 +46,13 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> im
         return myTestList.size();
     }
 
-    //ItemTouchHelperAdapter的接口实现
+    //ItemTouchHelperAdapter 的接口实现
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
         myTestList.add(toPosition, myTestList.remove(fromPosition));
         notifyItemMoved(fromPosition, toPosition);
     }
+
     @Override
     public void onItemDissmiss(int position) {
         myTestList.remove(position);
