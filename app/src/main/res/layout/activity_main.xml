@@ -10,8 +10,6 @@
     android:background="@color/colorDefaultBackground"
     tools:context=".activity.MainActivity">
 
-    <include layout="@layout/toolbar_main"/>
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -44,12 +42,14 @@
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
+    <include layout="@layout/toolbar_main"/>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/drawer_head"
-        app:menu="@menu/drawer_menu" />
+        app:menu="@menu/drawer_menu" />/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
