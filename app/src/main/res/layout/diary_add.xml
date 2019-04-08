@@ -1,94 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.DiaryAddActivity">
+
+    <Button
+        android:id="@+id/tvShowDialog"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_gravity="top"
+        android:text="选择日期"
+        android:textSize="18dp"
+        android:background="@color/app_yellow" />
+
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/first_layout">
-        <Button
-            android:id="@+id/tvShowDialog"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
+
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="0dp"
-            android:layout_gravity="center_vertical"
-            android:text="选择日期"
-            android:textSize="18dp"
-            android:background="@color/app_yellow"/>
-    </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_below="@+id/first_layout"
-        android:id="@+id/second_layout">
-<EditText
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:hint="请输入标题..."/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/second_layout"
-        >
+            android:layout_height="55dp"
+            android:layout_margin="10dp"
+            android:hint="请输入标题..."/>
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="10dp"
             android:hint="请输入正文..."
             android:gravity="top"
-            android:autoText="true"
             android:ellipsize="end"/>
 
+    </LinearLayout>
 
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        app:fab_addButtonSize="normal"
+        app:fab_expandDirection="up">
 
-    </RelativeLayout>
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_diary_fab_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:maxImageSize="24dp"
+            app:fab_colorNormal="#24d63c"
+            app:fab_icon="@drawable/fab_save"/>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="17dp"
-        android:layout_marginBottom="21dp">
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_diary_fab_add"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:maxImageSize="24dp"
+            app:fab_colorNormal="#e41c1c"
+            app:fab_icon="@drawable/fab_back" />
 
-        <com.getbase.floatingactionbutton.FloatingActionsMenu
-            android:id="@+id/right_labels"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            app:fab_addButtonSize="normal"
-            app:fab_colorNormal="@color/app_yellow"
-            app:fab_expandDirection="up"
-            app:fab_icon="@drawable/menu">
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/add_diary_fab_back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                app:fab_colorNormal="#24d63c"
-                app:fab_icon="@drawable/save_new"
-                app:fab_size="normal" />
-
-            <com.getbase.floatingactionbutton.FloatingActionButton
-                android:id="@+id/add_diary_fab_add"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/save"
-                app:fab_colorNormal="#e41c1c"
-                app:fab_icon="@drawable/back_new"
-                app:fab_size="normal"
-                app:fab_title="FAB 2" />
-        </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-
-    </RelativeLayout>
-
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

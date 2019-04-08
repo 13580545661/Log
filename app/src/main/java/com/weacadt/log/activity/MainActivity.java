@@ -266,16 +266,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public void onClick(View view) {
-        int pager = mViewPager.getCurrentItem();
+        int viewPager = mViewPager.getCurrentItem();
         switch (view.getId()){
             case R.id.fab:
-                if (mViewPager.getCurrentItem() == 0) {
-                    Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();
-                    mTodoFragment.addItem(new Test("新项目"));
-                }else if (mViewPager.getCurrentItem() == 1) {
-                    Toast.makeText(this, "你从日记点击了fab按钮", Toast.LENGTH_SHORT).show();
+                switch(viewPager) {
+                    case 0:
+                        Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();
+                        mTodoFragment.addItem(new Test("新项目"));
+                        break;
+                    case 1:
+                        DiaryAddActivity.ActivityStart(MainActivity.this);
+                        break;
                 }
-                break;
         }
     }
 }

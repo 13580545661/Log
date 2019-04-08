@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/item_first"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical"
-              android:paddingRight="10dp"
-              android:background="@color/white"
-    >
-
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_first"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingRight="10dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="25dp"
         android:orientation="horizontal"
         android:paddingLeft="10.8dp"
-        android:background="#ffffff"
-        >
+        android:background="#ffffff">
 
         <ImageView
             android:id="@+id/main_iv_circle"
@@ -23,8 +21,7 @@
             android:layout_width="22dp"
             android:layout_height="22dp"
             android:src="@drawable/circle_orange"
-            android:layout_gravity="center_vertical"
-            />
+            android:layout_gravity="center_vertical" />
 
         <TextView
             android:id="@+id/main_tv_date"
@@ -35,31 +32,27 @@
             android:paddingLeft="4dp"
             android:paddingTop="1dp"
             android:text="2017年01月18日"
-            android:textSize="14sp"
-            />
+            android:textSize="14sp" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="23dp"
             android:layout_height="match_parent"
-            android:background="@drawable/linear_style"
-            >
+            android:background="@drawable/linear_style">
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/item_ll_control"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:paddingTop="5dp"
                 android:background="#ffffff"
@@ -71,11 +64,9 @@
                 android:paddingRight="15dp"
                 android:text="今天，你什么都没写下..."
                 android:textColor="@color/gray"
-                android:textSize="16sp"
-                />
+                android:textSize="16sp" />
 
         </LinearLayout>
-
 
     </LinearLayout>
 
