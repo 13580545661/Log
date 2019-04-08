@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 
 import com.weacadt.log.R;
 import com.weacadt.log.data.ItemTouchHelperCallback;
-import com.weacadt.log.data.Test;
-import com.weacadt.log.adapter.TestAdapter;
+import com.weacadt.log.data.TodoItem;
+import com.weacadt.log.adapter.TodoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +23,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class TodoFragment extends Fragment {
     RecyclerView recyclerView;
-    TestAdapter adapter;
-    private List<Test> testList = new ArrayList<>();
+    TodoAdapter adapter;
+    private List<TodoItem> testList = new ArrayList<>();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,18 +47,18 @@ public class TodoFragment extends Fragment {
     }
 
     private void initTestData() {
-        testList.add(new Test("打扫卫生"));
-        testList.add(new Test("背诵单词"));
-        testList.add(new Test("看动漫"));
-        testList.add(new Test("洗衣服"));
-        testList.add(new Test("做作业"));
+        testList.add(new TodoItem("打扫卫生"));
+        testList.add(new TodoItem("背诵单词"));
+        testList.add(new TodoItem("看动漫"));
+        testList.add(new TodoItem("洗衣服"));
+        testList.add(new TodoItem("做作业"));
 
     }
 
     private void initData() {
         recyclerView = getActivity().findViewById(R.id.recycler_view_todo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new TestAdapter(testList);
+        adapter = new TodoAdapter(testList);
         recyclerView.setAdapter(adapter);
 
         //ItemTouchHelper
@@ -67,7 +67,7 @@ public class TodoFragment extends Fragment {
         touchHelper.attachToRecyclerView(recyclerView);
     }
 
-    public void addItem(Test test) {
+    public void addItem(TodoItem test) {
         adapter.addItem(test);
     }
 }

@@ -11,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.weacadt.log.R;
-import com.weacadt.log.data.Test;
+import com.weacadt.log.data.TodoItem;
 import com.weacadt.log.fragment.CalendarFragment;
 import com.weacadt.log.fragment.DiaryFragment;
 import com.weacadt.log.fragment.TodoFragment;
@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 switch(viewPager) {
                     case 0:
                         Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();
-                        mTodoFragment.addItem(new Test("新项目"));
+                        mTodoFragment.addItem(new TodoItem("新项目"));
                         break;
                     case 1:
                         DiaryAddActivity.ActivityStart(MainActivity.this);

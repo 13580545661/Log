@@ -8,19 +8,19 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.weacadt.log.R;
-import com.weacadt.log.data.Test;
+import com.weacadt.log.data.TodoItem;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> implements ItemTouchHelperAdapter{
+public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> implements ItemTouchHelperAdapter{
 
-    private List<Test> myTestList;
+    private List<TodoItem> myTestList;
     
 
-    public TestAdapter(List<Test> myTestList) {
+    public TodoAdapter(List<TodoItem> myTestList) {
         this.myTestList = myTestList;
     }
 
@@ -35,7 +35,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> im
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Test test = myTestList.get(i);
+        TodoItem test = myTestList.get(i);
         viewHolder.textView.setText(test.getTodoThing());
         viewHolder.checkBox.setChecked(test.isDone());
 
@@ -69,17 +69,17 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder> im
         }
     }
     
-    public void addItem(Test test) {
+    public void addItem(TodoItem test) {
         myTestList.add(test);
         notifyItemInserted(myTestList.size());
     }
     
-    public void addItem(int position, Test test) {
+    public void addItem(int position, TodoItem test) {
         myTestList.add(position, test);
         notifyItemInserted(position);
     }
     
-    public void setItem(int position, Test test) {
+    public void setItem(int position, TodoItem test) {
         myTestList.set(position, test);
         notifyDataSetChanged();
     }

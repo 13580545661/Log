@@ -1,20 +1,20 @@
 package com.weacadt.log.data;
 
-public class Test {
-    private String todoThing;
+public class TodoItem {
+    private String thing;
     private boolean isDone;
 
-    public Test(String todoThing) {
-        this.todoThing = todoThing;
+    public TodoItem(String thing) {
+        this.thing = thing;
         isDone = false;
     }
 
     public String getTodoThing() {
-        return todoThing;
+        return thing;
     }
 
     public void setTodoThing(String todoThing) {
-        this.todoThing = todoThing;
+        this.thing = todoThing;
     }
 
     public boolean isDone() {

@@ -8,21 +8,13 @@
     android:orientation="vertical"
     tools:context=".activity.DiaryAddActivity">
 
-    <Button
-        android:id="@+id/tvShowDialog"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:layout_gravity="top"
-        android:text="选择日期"
-        android:textSize="18dp"
-        android:background="@color/app_yellow" />
+    <include layout="@layout/toolbar_main" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="?actionBarSize">
 
         <EditText
             android:layout_width="match_parent"
@@ -47,7 +39,15 @@
         android:layout_margin="16dp"
         android:layout_gravity="bottom|end"
         app:fab_addButtonSize="normal"
-        app:fab_expandDirection="up">
+        app:fab_expandDirection="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_diary_fab_add"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:maxImageSize="24dp"
+            app:fab_colorNormal="#e41c1c"
+            app:fab_icon="@drawable/fab_back" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_diary_fab_back"
@@ -57,13 +57,7 @@
             app:fab_colorNormal="#24d63c"
             app:fab_icon="@drawable/fab_save"/>
 
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:id="@+id/add_diary_fab_add"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:maxImageSize="24dp"
-            app:fab_colorNormal="#e41c1c"
-            app:fab_icon="@drawable/fab_back" />
+
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
