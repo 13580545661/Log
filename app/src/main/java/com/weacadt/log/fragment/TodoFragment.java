@@ -59,7 +59,6 @@ public class TodoFragment extends Fragment {
         recyclerView = getActivity().findViewById(R.id.recycler_view_todo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter = new TestAdapter(testList);
-        TestAdapter adapter = new TestAdapter(testList);
         recyclerView.setAdapter(adapter);
 
         //ItemTouchHelper
