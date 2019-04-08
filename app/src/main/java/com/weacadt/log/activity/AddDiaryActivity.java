@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
 import com.weacadt.log.R;
 
@@ -20,7 +19,7 @@ import java.util.Calendar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class DiaryAddActivity extends AppCompatActivity implements View.OnClickListener {
+public class AddDiaryActivity extends AppCompatActivity implements View.OnClickListener {
     private Button tvShowDialog;
     private Calendar cal;
     private int mYear, mMonth, mDay;
@@ -62,7 +61,7 @@ public class DiaryAddActivity extends AppCompatActivity implements View.OnClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.toobar_setDate:
-                DatePickerDialog dialog = new DatePickerDialog(DiaryAddActivity.this, 0, listener, mYear, mMonth, mDay);//后边三个参数为显示dialog时默认的日期，月份从0开始，0-11对应1-12个月
+                DatePickerDialog dialog = new DatePickerDialog(AddDiaryActivity.this, 0, listener, mYear, mMonth, mDay);//后边三个参数为显示dialog时默认的日期，月份从0开始，0-11对应1-12个月
                 dialog.show();
         }
         return super.onOptionsItemSelected(item);
@@ -79,7 +78,7 @@ public class DiaryAddActivity extends AppCompatActivity implements View.OnClickL
     };
 
     public static void ActivityStart(Context context) {
-        Intent intent = new Intent(context, DiaryAddActivity.class);
+        Intent intent = new Intent(context, AddDiaryActivity.class);
         context.startActivity(intent);
     }
 

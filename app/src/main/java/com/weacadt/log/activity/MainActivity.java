@@ -1,5 +1,6 @@
 package com.weacadt.log.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -273,9 +274,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     case 0:
                         Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();
                         mTodoFragment.addItem(new TodoItem("新项目"));
+                        startActivity(new Intent(MainActivity.this, AddTodoActivity.class));
                         break;
                     case 1:
-                        DiaryAddActivity.ActivityStart(MainActivity.this);
+                        AddDiaryActivity.ActivityStart(MainActivity.this);
                         break;
                 }
         }
