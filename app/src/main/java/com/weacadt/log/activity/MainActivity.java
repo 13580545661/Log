@@ -34,7 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //抽屉
     private DrawerLayout mDrawerLayout;
+
+    //Fragment
     private TodoFragment mTodoFragment;
+    private DiaryFragment mDiaryFragment;
+    private CalendarFragment mCalendarFragment;
+
     //ViewPager
     private ViewPager mViewPager;
     private List<Fragment> fragmentList;
@@ -108,10 +113,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
     private void initMiddleView() {
-        //Fragment 声明及构造
+        //Fragment 构造
         mTodoFragment = new TodoFragment();
-        DiaryFragment mDiaryFragment = new DiaryFragment();
-        CalendarFragment mCalendarFragment = new CalendarFragment();
+        mDiaryFragment = new DiaryFragment();
+        mCalendarFragment = new CalendarFragment();
 
         //ViewPager 构造
         mViewPager = findViewById(R.id.view_pager);

@@ -20,4 +20,14 @@
     <string name="bnav_todo">待办</string>
     <string name="bnav_diary">日记</string>
     <string name="bnav_calendar">日历</string>
+
+    <string name="title_activity_about">AboutActivity</string>
+    <string-array name="Diary">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
 </resources>
