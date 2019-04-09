@@ -34,5 +34,4 @@
     <!--    AddDiaryActivity    -->
     <string name="add_diray_title">Add a title…</string>
     <string name="add_diary_text">Add texts…</string>
-
 </resources>
