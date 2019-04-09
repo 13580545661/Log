@@ -1,8 +1,8 @@
 package com.weacadt.log.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -41,5 +41,10 @@ public class AddTodoActivity extends Activity {
         super.finish();
         //finish时调用退出动画
         overridePendingTransition(activityCloseEnterAnimation, activityCloseExitAnimation);
+    }
+
+    public static void actionStart(Context context) {
+        Intent intent = new Intent(context, AddTodoActivity.class);
+        context.startActivity(intent);
     }
 }

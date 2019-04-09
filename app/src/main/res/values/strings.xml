@@ -9,6 +9,9 @@
     <string name="ab_today">Today</string>
     <string name="ab_diary">Diary</string>
     <string name="ab_calendar">Calendar</string>
+    <string name="ab_about">About</string>
+    <string name="ab_setting">Setting</string>
+    <string name="ab_set_date">Set date</string>
 
     <string name="nav_share">Share</string>
     <string name="nav_setting">Setting</string>
@@ -19,7 +22,6 @@
     <string name="bnav_diary">Diary</string>
     <string name="bnav_calendar">Calendar</string>
 
-    <string name="title_activity_about">AboutActivity</string>
     <string-array name="Diary">
         <item>1</item>
         <item>2</item>
@@ -28,4 +30,9 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+
+    <!--    AddDiaryActivity    -->
+    <string name="add_diray_title">Add a title…</string>
+    <string name="add_diary_text">Add texts…</string>
+
 </resources>

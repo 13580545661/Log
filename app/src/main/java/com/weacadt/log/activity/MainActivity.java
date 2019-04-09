@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //设置 ActionBar 为 ToolBar
         setSupportActionBar(toolbar);
         //设置 ActionBar 的默认标题（“待办事项”）
-        getSupportActionBar().setTitle(R.string.ab_today);
+        toolbar.setTitle(R.string.ab_today);
 
         //获取 ActionBar 实例
         ActionBar actionBar = getSupportActionBar();
@@ -162,11 +162,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case android.R.id.home: //点击抽屉按钮打开抽屉
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.none:
-                Toast.makeText(this, "Click None", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.none2:
-                Toast.makeText(this, "Click None2", Toast.LENGTH_LONG).show();
+            case R.id.about:
+                AboutActivity.actionStart(MainActivity.this);
                 break;
             default:
         }
@@ -222,12 +219,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()) {
-                case R.id.home:
-                    Toast.makeText(MainActivity.this, "Click Home", Toast.LENGTH_SHORT).show();
-                    mDrawerLayout.closeDrawers();
-                    return true;
                 case R.id.setting:
-                    Toast.makeText(MainActivity.this, "Click Setting", Toast.LENGTH_SHORT).show();
+                    SettingActivity.actionStart(MainActivity.this);
                     mDrawerLayout.closeDrawers();
                     return true;
                 case R.id.about:
@@ -272,12 +265,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab:
                 switch(viewPager) {
                     case 0:
-                        Toast.makeText(this, "你在待办点击了fab按钮", Toast.LENGTH_SHORT).show();
                         mTodoFragment.addItem(new TodoItem("新项目"));
-                        startActivity(new Intent(MainActivity.this, AddTodoActivity.class));
+                        AddTodoActivity.actionStart(MainActivity.this);
                         break;
                     case 1:
-                        AddDiaryActivity.ActivityStart(MainActivity.this);
+                        AddDiaryActivity.actionStart(MainActivity.this);
                         break;
                 }
         }

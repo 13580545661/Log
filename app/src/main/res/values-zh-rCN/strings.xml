@@ -10,6 +10,9 @@
     <string name="ab_today">今天</string>
     <string name="ab_diary">日记</string>
     <string name="ab_calendar">日历</string>
+    <string name="ab_about">关于</string>
+    <string name="ab_setting">设置</string>
+    <string name="ab_set_date">设置日期</string>
 
     <!--    侧边栏     -->
     <string name="nav_share">分享</string>
@@ -21,7 +24,6 @@
     <string name="bnav_diary">日记</string>
     <string name="bnav_calendar">日历</string>
 
-    <string name="title_activity_about">AboutActivity</string>
     <string-array name="Diary">
         <item>1</item>
         <item>2</item>
@@ -30,4 +32,9 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+
+    <!--    AddDiaryActivity    -->
+    <string name="add_diray_title">添加标题…</string>
+    <string name="add_diary_text">输入正文…</string>
+
 </resources>

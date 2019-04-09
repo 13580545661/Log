@@ -53,14 +53,14 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toobar_menu_add_diary, menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu_add_diary, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.toobar_setDate:
+            case R.id.ab_set_date:
                 DatePickerDialog dialog = new DatePickerDialog(AddDiaryActivity.this, 0, listener, mYear, mMonth, mDay);//后边三个参数为显示dialog时默认的日期，月份从0开始，0-11对应1-12个月
                 dialog.show();
         }
@@ -77,7 +77,7 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
         }
     };
 
-    public static void ActivityStart(Context context) {
+    public static void actionStart(Context context) {
         Intent intent = new Intent(context, AddDiaryActivity.class);
         context.startActivity(intent);
     }
