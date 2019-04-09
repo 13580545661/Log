@@ -26,6 +26,10 @@
         <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
         <!--背景是否模糊显示-->
         <item name="android:backgroundDimEnabled">false</item>
+        <!--点击空白处关闭-->
+        <item name="android:windowCloseOnTouchOutside">true</item>
+
+
     </style>
 
     <!--    从底部弹出的动画样式  -->
