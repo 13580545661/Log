@@ -6,19 +6,32 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.weacadt.log.R;
+import com.weacadt.log.data.TodoItem;
 
-public class AddTodoActivity extends Activity {
+import java.util.Date;
+
+public class AddTodoActivity extends Activity implements View.OnClickListener {
 
     protected int activityCloseEnterAnimation;
     protected int activityCloseExitAnimation;
+
+    private Button button;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_todo);
+
+
 
         TypedArray activityStyle = getTheme().obtainStyledAttributes(new int[] {android.R.attr.windowAnimationStyle});
         int windowAnimationStyleResId = activityStyle.getResourceId(0, 0);
@@ -34,6 +47,8 @@ public class AddTodoActivity extends Activity {
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.width= WindowManager.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(layoutParams);
+
+        initData();
     }
 
     @Override
@@ -46,5 +61,32 @@ public class AddTodoActivity extends Activity {
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, AddTodoActivity.class);
         context.startActivity(intent);
+    }
+
+    void initData(){
+        button = findViewById(R.id.btn_add_todo);
+        editText = findViewById(R.id.et_todo);
+        button.setOnClickListener(this);
+
+        editText.requestFocus();
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_add_todo:
+                Intent intent = new Intent(AddTodoActivity.this, MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("todo", editText.getText().toString());
+                intent.putExtras(bundle);
+                if (editText.getText().length()==0) {
+                    AddTodoActivity.this.finish();
+                }else {
+                    AddTodoActivity.this.setResult(RESULT_OK, intent);
+                    AddTodoActivity.this.finish();
+                }
+                break;
+        }
     }
 }

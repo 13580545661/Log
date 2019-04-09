@@ -12,15 +12,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.weacadt.log.R;
+import com.weacadt.log.application.BaseApplication;
 import com.weacadt.log.data.TodoItem;
+import com.weacadt.log.database.DaoSession;
+import com.weacadt.log.database.TodoItemDao;
 import com.weacadt.log.fragment.CalendarFragment;
 import com.weacadt.log.fragment.DiaryFragment;
 import com.weacadt.log.fragment.TodoFragment;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //悬浮按钮
     private FloatingActionButton fab;
 
+    //数据库
+    private DaoSession daoSession;
+    private TodoItemDao todoItemDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initData() {
+        //数据库
+        daoSession = ((BaseApplication)getApplication()).getDaoSession();
+        todoItemDao = daoSession.getTodoItemDao();
+
+
         fpAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
@@ -265,13 +279,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab:
                 switch(viewPager) {
                     case 0:
-                        mTodoFragment.addItem(new TodoItem("新项目"));
-                        AddTodoActivity.actionStart(MainActivity.this);
+                        Intent intent = new Intent(MainActivity.this, AddTodoActivity.class);
+                        startActivityForResult(intent,0);
+
                         break;
                     case 1:
                         AddDiaryActivity.actionStart(MainActivity.this);
                         break;
                 }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case RESULT_OK:
+                Bundle bundle = data.getExtras();
+                TodoItem todoItem = new TodoItem();
+                todoItem.setThing(bundle.getString("todo"));
+                todoItem.setDate(new Date());
+                todoItemDao.insert(todoItem);
+                mTodoFragment.addItem(todoItem);
         }
     }
 }

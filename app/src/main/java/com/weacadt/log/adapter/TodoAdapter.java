@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.weacadt.log.R;
 import com.weacadt.log.data.TodoItem;
+import com.weacadt.log.database.DaoSession;
 
 import java.util.List;
 
@@ -18,10 +19,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> implements ItemTouchHelperAdapter{
 
     private List<TodoItem> myTestList;
+    private DaoSession daoSession;
+
     
 
-    public TodoAdapter(List<TodoItem> myTestList) {
+    public TodoAdapter(List<TodoItem> myTestList, DaoSession daoSession) {
         this.myTestList = myTestList;
+        this.daoSession = daoSession;
     }
 
     @NonNull
@@ -55,6 +59,8 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> im
 
     @Override
     public void onItemDissmiss(int position) {
+
+        daoSession.getTodoItemDao().delete(myTestList.get(position));
         myTestList.remove(position);
         notifyItemRemoved(position);
     }
