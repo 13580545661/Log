@@ -287,13 +287,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String todo = bundle.getString("todo");
                 if (todo.length() != 0) {
                     mTodoFragment.addItem(new TodoItem(todo));
-                    Toast.makeText(this, "123123", Toast.LENGTH_LONG).show();
                 }
                 break;
             case 3:
                 bundle = data.getExtras();
                 String title = bundle.getString("diary_title");
                 String content = bundle.getString("diary_content");
+                int mYear = bundle.getInt("mYear");
+                int mMonth = bundle.getInt("mMonth");
+                int mDay = bundle.getInt("mDay");
                 if (title.length() == 0 && content.length() == 0) {
 
                 }else {

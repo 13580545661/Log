@@ -105,6 +105,9 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
                 Bundle bundle = new Bundle();
                 bundle.putString("diary_title", editText.getText().toString());
                 bundle.putString("diary_content", inputEditText.getText().toString());
+                bundle.putInt("mYear", mYear);
+                bundle.putInt("mMonth", mMonth);
+                bundle.putInt("mDay",mDay);
                 intent.putExtras(bundle);
                 setResult(3, intent);
                 finish();
