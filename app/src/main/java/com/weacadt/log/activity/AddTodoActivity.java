@@ -6,14 +6,19 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.weacadt.log.R;
 
-public class AddTodoActivity extends Activity {
+public class AddTodoActivity extends Activity implements View.OnClickListener {
 
     protected int activityCloseEnterAnimation;
     protected int activityCloseExitAnimation;
+    private Button button;
+    private EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,9 @@ public class AddTodoActivity extends Activity {
         WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
         layoutParams.width= WindowManager.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(layoutParams);
+
+
+        init();
     }
 
     @Override
@@ -46,5 +54,25 @@ public class AddTodoActivity extends Activity {
     public static void actionStart(Context context) {
         Intent intent = new Intent(context, AddTodoActivity.class);
         context.startActivity(intent);
+    }
+
+    private void init() {
+        button = findViewById(R.id.btn_add_todo);
+        editText = findViewById(R.id.et_todo);
+
+        button.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_add_todo:
+                Intent intent = new Intent(AddTodoActivity.this, MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("todo", editText.getText().toString());
+                intent.putExtras(bundle);
+                setResult(2, intent);
+                finish();
+        }
     }
 }

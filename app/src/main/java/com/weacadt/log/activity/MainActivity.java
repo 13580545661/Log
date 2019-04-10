@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -265,14 +266,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.fab:
                 switch(viewPager) {
                     case 0:
-                        mTodoFragment.addItem(new TodoItem("新项目"));
-                        AddTodoActivity.actionStart(MainActivity.this);
+                        Intent intent = new Intent(MainActivity.this, AddTodoActivity.class);
+                        startActivityForResult(intent, 0);
                         break;
                     case 1:
                         AddDiaryActivity.actionStart(MainActivity.this);
                         break;
                 }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (resultCode) {
+            case 2:
+                Bundle bundle = data.getExtras();
+                mTodoFragment.addItem(new TodoItem(bundle.getString("todo")));
+
+        }
+
     }
 }
 

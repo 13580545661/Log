@@ -29,7 +29,6 @@ public class TodoFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initTestData();
 
     }
 
@@ -46,14 +45,6 @@ public class TodoFragment extends Fragment {
         initData();
     }
 
-    private void initTestData() {
-        testList.add(new TodoItem("打扫卫生"));
-        testList.add(new TodoItem("背诵单词"));
-        testList.add(new TodoItem("看动漫"));
-        testList.add(new TodoItem("洗衣服"));
-        testList.add(new TodoItem("做作业"));
-
-    }
 
     private void initData() {
         recyclerView = getActivity().findViewById(R.id.recycler_view_todo);

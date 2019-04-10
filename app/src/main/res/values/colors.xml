@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <!--原版 #008577-->
+    <color name="colorPrimary">#2196F3</color>
+    <!--原版 #00574B-->
+    <color name="colorPrimaryDark">#1976D2</color>
+    <!--原版 #D81B60-->
+    <color name="colorAccent">#F4B400</color>
 
     <color name="colorDefaultBackground">#FFFFFF</color>
     <color name="colorBackground">#FFFFFF</color>
