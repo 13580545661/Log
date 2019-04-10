@@ -12,6 +12,7 @@
 
         <activity
             android:name=".activity.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,9 +31,9 @@
 
         <activity
             android:name=".activity.AddTodoActivity"
+            android:windowSoftInputMode="stateVisible"
             android:theme="@style/ActivityDialogTheme"/>
 
         <activity android:name=".activity.AddDiaryActivity" />
     </application>
-
 </manifest>

@@ -4,6 +4,7 @@
     android:id="@+id/main_ll_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorDefaultBackground"
     android:orientation="vertical">
 
     <TextView
@@ -14,14 +15,12 @@
         android:id="@+id/item_first"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
         android:orientation="vertical"
         android:paddingRight="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:background="#ffffff"
             android:orientation="horizontal"
             android:paddingLeft="10.8dp">
 
@@ -66,7 +65,6 @@
                     android:id="@+id/main_tv_content"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="#ffffff"
                     android:lineSpacingExtra="4dp"
                     android:paddingLeft="33dp"
                     android:paddingRight="15dp"
