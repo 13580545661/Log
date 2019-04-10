@@ -296,10 +296,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int mYear = bundle.getInt("mYear");
                 int mMonth = bundle.getInt("mMonth");
                 int mDay = bundle.getInt("mDay");
-                if (title.length() == 0 && content.length() == 0) {
-
-                }else {
+                if (!(title.length() == 0 && content.length() == 0)) {
                     Toast.makeText(this, title, Toast.LENGTH_LONG).show();
+                    //此处编写添加逻辑
+                }else {
+
                 }
                 break;
         }
