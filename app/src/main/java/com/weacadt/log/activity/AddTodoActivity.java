@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.android.material.button.MaterialButton;
 import com.weacadt.log.R;
 
 public class AddTodoActivity extends Activity implements View.OnClickListener {
@@ -57,6 +58,7 @@ public class AddTodoActivity extends Activity implements View.OnClickListener {
     }
 
     private void init() {
+        //materialButton = findViewById(R.id.btn_add_todo);
         button = findViewById(R.id.btn_add_todo);
         editText = findViewById(R.id.et_todo);
 

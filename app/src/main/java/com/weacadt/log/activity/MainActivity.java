@@ -282,8 +282,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (resultCode) {
             case 2:
                 Bundle bundle = data.getExtras();
-                mTodoFragment.addItem(new TodoItem(bundle.getString("todo")));
-
+                String todo = bundle.getString("todo");
+                if (todo.length() != 0) {
+                    mTodoFragment.addItem(new TodoItem(todo));
+                }
         }
 
     }
