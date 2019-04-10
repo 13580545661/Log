@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.weacadt.log.R;
+import com.weacadt.log.data.DiaryItem;
 import com.weacadt.log.data.TodoItem;
 import com.weacadt.log.fragment.CalendarFragment;
 import com.weacadt.log.fragment.DiaryFragment;
@@ -297,7 +298,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int mMonth = bundle.getInt("mMonth");
                 int mDay = bundle.getInt("mDay");
                 if (!(title.length() == 0 && content.length() == 0)) {
-                    Toast.makeText(this, title, Toast.LENGTH_LONG).show();
+                    mDiaryFragment.addItem(new DiaryItem(title, content, mYear, mMonth, mDay));
                     //此处编写添加逻辑
                 }else {
 

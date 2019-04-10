@@ -62,7 +62,7 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
         cal = Calendar.getInstance();
         mYear = cal.get(Calendar.YEAR);       //获取年月日时分秒
         Log.i("wxy", "year" + mYear);
-        mMonth = cal.get(Calendar.MONTH);   //获取到的月份是从0开始计数
+        mMonth = cal.get(Calendar.MONTH) + 1;   //获取到的月份是从0开始计数
         mDay = cal.get(Calendar.DAY_OF_MONTH);
     }
 
@@ -76,7 +76,7 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.ab_set_date:
-                DatePickerDialog dialog = new DatePickerDialog(AddDiaryActivity.this, 0, listener, mYear, mMonth, mDay);//后边三个参数为显示dialog时默认的日期，月份从0开始，0-11对应1-12个月
+                DatePickerDialog dialog = new DatePickerDialog(AddDiaryActivity.this, 0, listener, mYear, mMonth -1, mDay);//后边三个参数为显示dialog时默认的日期，月份从0开始，0-11对应1-12个月
                 dialog.show();
         }
         return super.onOptionsItemSelected(item);
@@ -85,9 +85,9 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
     OnDateSetListener listener = new OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            getSupportActionBar().setTitle(year + "年" + (month + 1) + "月" + dayOfMonth + "日");
+            getSupportActionBar().setTitle(year + "年" + month + "月" + dayOfMonth + "日");
             mYear = year;
-            mMonth = month;
+            mMonth = month + 1;
             mDay = dayOfMonth;
         }
     };
