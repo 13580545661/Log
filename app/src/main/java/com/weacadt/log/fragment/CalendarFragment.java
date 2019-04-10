@@ -32,7 +32,7 @@ public class CalendarFragment extends Fragment {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                Toast.makeText(getContext(), "你选择了"+year+"年"+month+"月"+dayOfMonth+"日", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "你选择了"+year+"年"+(month + 1)+"月"+dayOfMonth+"日", Toast.LENGTH_LONG).show();
             }
         });
     }
