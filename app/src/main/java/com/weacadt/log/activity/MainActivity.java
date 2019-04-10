@@ -186,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 case 0:
                     mBottomNavigationView.setSelectedItemId(R.id.bottom_nav_todo);
                     if (!fab.isShown()) {
-                        Toast.makeText(MainActivity.this, "fab is not shown", Toast.LENGTH_LONG).show();
                         fab.show();
                     }
 
@@ -262,15 +261,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         int viewPager = mViewPager.getCurrentItem();
+        Intent intent;
         switch (view.getId()){
             case R.id.fab:
                 switch(viewPager) {
                     case 0:
-                        Intent intent = new Intent(MainActivity.this, AddTodoActivity.class);
+                        intent = new Intent(MainActivity.this, AddTodoActivity.class);
                         startActivityForResult(intent, 0);
                         break;
                     case 1:
-                        AddDiaryActivity.actionStart(MainActivity.this);
+                        intent = new Intent(MainActivity.this, AddDiaryActivity.class);
+                        startActivityForResult(intent, 0);
                         break;
                 }
         }
@@ -278,14 +279,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Bundle bundle;
         super.onActivityResult(requestCode, resultCode, data);
         switch (resultCode) {
             case 2:
-                Bundle bundle = data.getExtras();
+                bundle = data.getExtras();
                 String todo = bundle.getString("todo");
                 if (todo.length() != 0) {
                     mTodoFragment.addItem(new TodoItem(todo));
+                    Toast.makeText(this, "123123", Toast.LENGTH_LONG).show();
                 }
+                break;
+            case 3:
+                bundle = data.getExtras();
+                String title = bundle.getString("diary_title");
+                String content = bundle.getString("diary_content");
+                if (title.length() == 0 && content.length() == 0) {
+
+                }else {
+                    Toast.makeText(this, title, Toast.LENGTH_LONG).show();
+                }
+                break;
         }
 
     }

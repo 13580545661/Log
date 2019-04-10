@@ -11,7 +11,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 
+import com.getbase.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.weacadt.log.R;
 
 import java.util.Calendar;
@@ -24,6 +27,10 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
     private Calendar cal;
     private int mYear, mMonth, mDay;
     private Toolbar toolbar;
+    private EditText editText;
+    private TextInputEditText inputEditText;
+    private FloatingActionButton fab_add;
+    private FloatingActionButton fab_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,15 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
         getDate();
         getSupportActionBar().setTitle(mYear + "年" + (mMonth + 1) + "月" + mDay + "日");
 
+        //按钮
+        fab_add = findViewById(R.id.add_diary_fab_add);
+        fab_back = findViewById(R.id.add_diary_fab_back);
 
+        fab_add.setOnClickListener(this);
+        fab_back.setOnClickListener(this);
+        //相关控件
+        editText = findViewById(R.id.et_diary);
+        inputEditText = findViewById(R.id.tiet_diary_content);
     }
 
     /**
@@ -85,7 +100,19 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.add_diary_fab_add:break;
+            case R.id.add_diary_fab_add:
+                Intent intent = new Intent(AddDiaryActivity.this, MainActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("diary_title", editText.getText().toString());
+                bundle.putString("diary_content", inputEditText.getText().toString());
+                intent.putExtras(bundle);
+                setResult(3, intent);
+                finish();
+                break;
+            case R.id.add_diary_fab_back:
+                setResult(RESULT_CANCELED);
+                finish();
+                break;
         }
     }
 }
