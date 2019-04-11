@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.weacadt.log.R;
 import com.weacadt.log.data.DiaryItem;
+import com.weacadt.log.database.DiaryItemDao;
 
 import java.util.Calendar;
 import java.util.List;
@@ -21,8 +22,11 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
     private List<DiaryItem> list;
     private int editPosition = -1;
 
-    public DiaryAdapter(List<DiaryItem> list) {
+    private DiaryItemDao diaryItemDao;
+
+    public DiaryAdapter(List<DiaryItem> list, DiaryItemDao diaryItemDao) {
         this.list = list;
+        this.diaryItemDao = diaryItemDao;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -110,6 +114,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
 
     public void addItem(DiaryItem diaryItem) {
         list.add(0, diaryItem);
+        diaryItemDao.insert(diaryItem);
         notifyItemInserted(0);
     }
 }

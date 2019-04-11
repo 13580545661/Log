@@ -6,9 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.weacadt.log.R;
+import com.weacadt.log.application.BaseApplication;
 import com.weacadt.log.data.ItemTouchHelperCallback;
 import com.weacadt.log.data.TodoItem;
 import com.weacadt.log.adapter.TodoAdapter;
+import com.weacadt.log.database.DaoSession;
+import com.weacadt.log.database.TodoItemDao;
+
+import org.greenrobot.greendao.Property;
+import org.greenrobot.greendao.annotation.Id;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +28,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class TodoFragment extends Fragment {
-    RecyclerView recyclerView;
-    TodoAdapter adapter;
+    private RecyclerView recyclerView;
+    private TodoAdapter adapter;
     private List<TodoItem> testList = new ArrayList<>();
+
+    private DaoSession daoSession;
+    private TodoItemDao todoItemDao;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        initDatabase();
         super.onCreate(savedInstanceState);
 
     }
@@ -46,10 +56,16 @@ public class TodoFragment extends Fragment {
     }
 
 
+    private void initDatabase() {
+        daoSession = ((BaseApplication)(getActivity().getApplication())).getDaoSession();
+        todoItemDao = daoSession.getTodoItemDao();
+        testList = todoItemDao.queryBuilder().orderAsc(TodoItemDao.Properties.Order).list();
+
+    }
     private void initData() {
         recyclerView = getActivity().findViewById(R.id.recycler_view_todo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new TodoAdapter(testList);
+        adapter = new TodoAdapter(testList, todoItemDao);
         recyclerView.setAdapter(adapter);
 
         //ItemTouchHelper
@@ -58,7 +74,7 @@ public class TodoFragment extends Fragment {
         touchHelper.attachToRecyclerView(recyclerView);
     }
 
-    public void addItem(TodoItem test) {
-        adapter.addItem(test);
+    public void addItem(TodoItem todoItem) {
+        adapter.addItem(todoItem);
     }
 }

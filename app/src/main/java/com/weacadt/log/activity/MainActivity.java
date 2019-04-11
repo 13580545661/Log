@@ -12,8 +12,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.weacadt.log.R;
+import com.weacadt.log.application.BaseApplication;
 import com.weacadt.log.data.DiaryItem;
 import com.weacadt.log.data.TodoItem;
+import com.weacadt.log.database.DaoSession;
+import com.weacadt.log.database.DiaryItemDao;
+import com.weacadt.log.database.TodoItemDao;
 import com.weacadt.log.fragment.CalendarFragment;
 import com.weacadt.log.fragment.DiaryFragment;
 import com.weacadt.log.fragment.TodoFragment;
@@ -35,6 +39,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //数据库
+    private DaoSession daoSession;
+    private TodoItemDao todoItemDao;
+    private DiaryItemDao diaryItemDao;
 
     //抽屉
     private DrawerLayout mDrawerLayout;
@@ -61,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         initData();
+        initDatabase();
         initTopView();
         initMiddleView();
         initBottomView();
@@ -68,6 +78,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mViewPager.setAdapter(fpAdapter);
     }
 
+    //初始化数据库
+    private void initDatabase() {
+        daoSession = ((BaseApplication)getApplication()).getDaoSession();
+        todoItemDao = daoSession.getTodoItemDao();
+        diaryItemDao = daoSession.getDiaryItemDao();
+    }
+
+    //初始化数据
     private void initData() {
         fpAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

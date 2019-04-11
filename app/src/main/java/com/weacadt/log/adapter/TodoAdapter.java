@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.weacadt.log.R;
 import com.weacadt.log.data.TodoItem;
+import com.weacadt.log.database.DaoSession;
+import com.weacadt.log.database.TodoItemDao;
 
 import java.util.List;
 
@@ -18,10 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> implements ItemTouchHelperAdapter{
 
     private List<TodoItem> myTestList;
-    
+    private TodoItemDao todoItemDao;
 
-    public TodoAdapter(List<TodoItem> myTestList) {
+
+    public TodoAdapter(List<TodoItem> myTestList, TodoItemDao todoItemDao) {
         this.myTestList = myTestList;
+        this.todoItemDao = todoItemDao;
     }
 
     @NonNull
@@ -49,12 +53,19 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> im
     //ItemTouchHelperAdapter 的接口实现
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
+        myTestList.get(fromPosition).setOrder((long)toPosition);
+        todoItemDao.update(myTestList.get(fromPosition));
+
+        myTestList.get(toPosition).setOrder((long)fromPosition);
+        todoItemDao.update(myTestList.get(toPosition));
+
         myTestList.add(toPosition, myTestList.remove(fromPosition));
         notifyItemMoved(fromPosition, toPosition);
     }
 
     @Override
     public void onItemDissmiss(int position) {
+        todoItemDao.delete(myTestList.get(position));
         myTestList.remove(position);
         notifyItemRemoved(position);
     }
@@ -71,14 +82,10 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> im
     
     public void addItem(TodoItem test) {
         myTestList.add(test);
+        todoItemDao.insert(test);
         notifyItemInserted(myTestList.size());
     }
-    
-    public void addItem(int position, TodoItem test) {
-        myTestList.add(position, test);
-        notifyItemInserted(position);
-    }
-    
+
     public void setItem(int position, TodoItem test) {
         myTestList.set(position, test);
         notifyDataSetChanged();

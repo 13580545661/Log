@@ -13,16 +13,28 @@ import android.view.ViewGroup;
 
 import com.weacadt.log.R;
 import com.weacadt.log.adapter.DiaryAdapter;
+import com.weacadt.log.application.BaseApplication;
 import com.weacadt.log.data.DiaryItem;
+import com.weacadt.log.database.DaoSession;
+import com.weacadt.log.database.DiaryItemDao;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryFragment extends Fragment {
 
+    private DaoSession daoSession;
+    private DiaryItemDao diaryItemDao;
+
     private RecyclerView recyclerView;
     private DiaryAdapter diaryAdapter;
     private List<DiaryItem> list = new ArrayList<>();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initDatabase();
+    }
 
     @Nullable
     @Override
@@ -38,10 +50,16 @@ public class DiaryFragment extends Fragment {
         initData();
     }
 
+    private void initDatabase() {
+        daoSession = ((BaseApplication)(getActivity().getApplication())).getDaoSession();
+        diaryItemDao = daoSession.getDiaryItemDao();
+        list = diaryItemDao.queryBuilder().orderDesc(DiaryItemDao.Properties.Id).list();
+    }
+
     public void initData() {
         recyclerView = getActivity().findViewById(R.id.recycler_view_diary);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        diaryAdapter = new DiaryAdapter(list);
+        diaryAdapter = new DiaryAdapter(list, diaryItemDao);
         recyclerView.setAdapter(diaryAdapter);
 
     }

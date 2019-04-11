@@ -25,7 +25,7 @@ public class TodoItemDao extends AbstractDao<TodoItem, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Order = new Property(1, Long.class, "order", false, "ORDER");
+        public final static Property Order = new Property(1, Long.class, "order", false, "Order");
         public final static Property Thing = new Property(2, String.class, "thing", false, "THING");
         public final static Property IsDone = new Property(3, boolean.class, "isDone", false, "IS_DONE");
         public final static Property Year = new Property(4, int.class, "year", false, "YEAR");
@@ -47,7 +47,7 @@ public class TodoItemDao extends AbstractDao<TodoItem, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"TODO_ITEM\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"ORDER\" INTEGER," + // 1: order
+                "\"Order\" INTEGER," + // 1: order
                 "\"THING\" TEXT," + // 2: thing
                 "\"IS_DONE\" INTEGER NOT NULL ," + // 3: isDone
                 "\"YEAR\" INTEGER NOT NULL ," + // 4: year
