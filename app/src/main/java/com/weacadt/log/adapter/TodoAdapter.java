@@ -1,10 +1,12 @@
 package com.weacadt.log.adapter;
 
 
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.weacadt.log.R;
@@ -39,9 +41,35 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.ViewHolder> im
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        TodoItem test = myTestList.get(i);
-        viewHolder.textView.setText(test.getTodoThing());
-        viewHolder.checkBox.setChecked(test.isDone());
+        final TodoItem test = myTestList.get(i);
+        final TextView textView = viewHolder.textView;
+        final CheckBox checkBox = viewHolder.checkBox;
+
+        textView.setText(test.getTodoThing());
+        checkBox.setChecked(test.isDone());
+
+        if (test.isDone()) {
+            viewHolder.textView.setPaintFlags(viewHolder.textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }else {
+            viewHolder.textView.setPaintFlags(viewHolder.textView.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+        }
+
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    textView.setPaintFlags(textView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    textView.getPaint().setAntiAlias(true);
+                    test.setDone(true);
+
+                }else {
+                    textView.setPaintFlags(textView.getPaintFlags() & Paint.STRIKE_THRU_TEXT_FLAG);
+                    textView.getPaint() .setAntiAlias(true);
+                    test.setDone(false);
+                }
+                notifyDataSetChanged();
+            }
+        });
 
     }
 

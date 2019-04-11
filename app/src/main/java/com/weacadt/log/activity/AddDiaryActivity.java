@@ -42,7 +42,7 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
 
         //获取当前日期
         getDate();
-        getSupportActionBar().setTitle(mYear + "年" + (mMonth + 1) + "月" + mDay + "日");
+        getSupportActionBar().setTitle(mYear + "年" + mMonth + "月" + mDay + "日");
 
         //按钮
         fab_add = findViewById(R.id.add_diary_fab_add);
@@ -85,7 +85,7 @@ public class AddDiaryActivity extends AppCompatActivity implements View.OnClickL
     OnDateSetListener listener = new OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            getSupportActionBar().setTitle(year + "年" + month + "月" + dayOfMonth + "日");
+            getSupportActionBar().setTitle(year + "年" + (month + 1) + "月" + dayOfMonth + "日");
             mYear = year;
             mMonth = month + 1;
             mDay = dayOfMonth;

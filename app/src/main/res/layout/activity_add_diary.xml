@@ -45,7 +45,7 @@
         android:layout_height="200dp"
         android:layout_margin="16dp"
         android:layout_gravity="bottom|end"
-        app:fab_addButtonSize="normal"
+        app:fab_addButtonSize="mini"
         app:fab_expandDirection="left">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -54,7 +54,7 @@
             android:layout_height="56dp"
             app:maxImageSize="24dp"
             app:fab_colorNormal="#e41c1c"
-            app:fab_icon="@drawable/fab_back" />
+            app:fab_icon="@drawable/baseline_clear_24" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/add_diary_fab_add"
@@ -62,7 +62,7 @@
             android:layout_height="56dp"
             app:maxImageSize="24dp"
             app:fab_colorNormal="#24d63c"
-            app:fab_icon="@drawable/fab_save"/>
+            app:fab_icon="@drawable/baseline_done_24"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 

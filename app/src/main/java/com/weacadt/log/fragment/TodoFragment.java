@@ -1,5 +1,6 @@
 package com.weacadt.log.fragment;
 
+import android.app.DownloadManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +16,10 @@ import com.weacadt.log.database.TodoItemDao;
 
 import org.greenrobot.greendao.Property;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -59,7 +62,15 @@ public class TodoFragment extends Fragment {
     private void initDatabase() {
         daoSession = ((BaseApplication)(getActivity().getApplication())).getDaoSession();
         todoItemDao = daoSession.getTodoItemDao();
-        testList = todoItemDao.queryBuilder().orderAsc(TodoItemDao.Properties.Order).list();
+
+        Calendar cal = Calendar.getInstance();
+        QueryBuilder<com.weacadt.log.data.TodoItem> qb = todoItemDao.queryBuilder();
+
+        testList = qb.where(TodoItemDao.Properties.Year.eq(cal.get(Calendar.YEAR)),
+                TodoItemDao.Properties.Month.eq(cal.get(Calendar.MONTH) + 1),
+                TodoItemDao.Properties.DayOfMonth.eq(cal.get(Calendar.DAY_OF_MONTH)))
+                .orderAsc(TodoItemDao.Properties.Order)
+                .list();
 
     }
     private void initData() {
