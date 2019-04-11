@@ -19,6 +19,7 @@ import com.weacadt.log.fragment.DiaryFragment;
 import com.weacadt.log.fragment.TodoFragment;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -287,7 +288,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 bundle = data.getExtras();
                 String todo = bundle.getString("todo");
                 if (todo.length() != 0) {
-                    mTodoFragment.addItem(new TodoItem(todo));
+                    Calendar cal = Calendar.getInstance();
+                    TodoItem todoItem = new TodoItem();
+                    todoItem.setOrder(todoItem.getId());
+                    todoItem.setThing(todo);
+                    todoItem.setDone(false);
+                    todoItem.setYear(cal.get(Calendar.YEAR));
+                    todoItem.setMonth(cal.get(Calendar.MONTH) + 1);
+                    todoItem.setDayOfMonth(cal.get(Calendar.DAY_OF_MONTH));
+                    mTodoFragment.addItem(todoItem);
                 }
                 break;
             case 3:

@@ -1,6 +1,14 @@
 package com.weacadt.log.data;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
+
+@Entity
 public class DiaryItem {
+    @Id(autoincrement = true)
+    private Long id;
+
     private String title;
     private String content;
     private int year;
@@ -11,6 +19,16 @@ public class DiaryItem {
 
     }
     public DiaryItem(String title, String content, int year, int month, int dayOfMonth) {
+        this.title = title;
+        this.content = content;
+        this.year = year;
+        this.month = month;
+        this.dayOfMonth = dayOfMonth;
+    }
+    @Generated(hash = 1841770258)
+    public DiaryItem(Long id, String title, String content, int year, int month,
+            int dayOfMonth) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.year = year;
@@ -56,5 +74,11 @@ public class DiaryItem {
 
     public void setDayOfMonth(int dayOfMonth) {
         this.dayOfMonth = dayOfMonth;
+    }
+    public Long getId() {
+        return this.id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 }
