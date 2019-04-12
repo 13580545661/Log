@@ -5,14 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <CalendarView android:id="@+id/calendar"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:firstDayOfWeek="3"
-        android:shownWeekCount="7"
-        android:focusedMonthDateColor="#FF8000"
-        android:selectedWeekBackgroundColor="#9BFFFF"
-        android:weekSeparatorLineColor="#0000FF"/>
+        android:elevation="6dp"
+        >
+
+        <CalendarView android:id="@+id/calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:firstDayOfWeek="3"
+            android:shownWeekCount="7"
+            android:focusedMonthDateColor="#FF8000"
+            android:selectedWeekBackgroundColor="#9BFFFF"
+            android:weekSeparatorLineColor="#0000FF"
+            />
+    </FrameLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
