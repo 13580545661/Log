@@ -1,5 +1,9 @@
 package com.weacadt.log.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.weacadt.log.R;
+import com.weacadt.log.activity.EditDiaryActivity;
 import com.weacadt.log.data.DiaryItem;
 import com.weacadt.log.database.DiaryItemDao;
 
@@ -21,12 +26,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
 
     private List<DiaryItem> list;
     private int editPosition = -1;
+    private Activity context;
 
     private DiaryItemDao diaryItemDao;
 
-    public DiaryAdapter(List<DiaryItem> list, DiaryItemDao diaryItemDao) {
+    public DiaryAdapter(List<DiaryItem> list, DiaryItemDao diaryItemDao, Activity context) {
         this.list = list;
         this.diaryItemDao = diaryItemDao;
+        this.context = context;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -52,7 +59,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
 
         holder.mTvDate.setText(date.toString());
         holder.mTvTitle.setText(list.get(position).getTitle());
-        holder.mTvContent.setText("       " + list.get(position).getContent());
+        holder.mTvContent.setText("     " + list.get(position).getContent());
         holder.mIvEdit.setVisibility(View.INVISIBLE);
         if(editPosition == position){
             holder.mIvEdit.setVisibility(View.VISIBLE);
@@ -74,12 +81,14 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
             }
         });
 
-//        holder.mIvEdit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                EventBus.getDefault().post(new StartUpdateDiaryEvent(position));
-//            }
-//        });
+        holder.mIvEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EditDiaryActivity.class);
+                intent.putExtra("id", list.get(position).getId());
+                context.startActivityForResult(intent, 0);
+            }
+        });
     }
 
     @Override

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.AddDiaryActivity">
+
+    <include layout="@layout/toolbar_main" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?actionBarSize">
+
+        <EditText
+            android:id="@+id/et_edit_diary"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginHorizontal="18dp"
+            android:textSize="18sp"
+            android:hint="@string/add_diray_title"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tiet_edit_diary_content"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:layout_margin="18dp"
+            android:background="@null"
+            android:hint="@string/add_diary_text"
+            android:gravity="top"
+            android:textSize="16sp"
+            android:paddingHorizontal="4dp"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+    <com.getbase.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/fab_menu_edit"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom|end"
+        app:fab_addButtonSize="mini"
+        app:fab_expandDirection="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_diary_fab_delete"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:maxImageSize="24dp"
+            app:fab_colorNormal="#e41c1c"
+            />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_diary_fab_back"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:maxImageSize="24dp"
+            app:fab_colorNormal="#e41c1c"
+            app:fab_icon="@drawable/baseline_clear_24" />
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:id="@+id/edit_diary_fab_add"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:maxImageSize="24dp"
+            app:fab_colorNormal="#24d63c"
+            app:fab_icon="@drawable/baseline_done_24"/>
+
+    </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

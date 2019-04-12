@@ -59,13 +59,16 @@ public class DiaryFragment extends Fragment {
     public void initData() {
         recyclerView = getActivity().findViewById(R.id.recycler_view_diary);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        diaryAdapter = new DiaryAdapter(list, diaryItemDao);
+        diaryAdapter = new DiaryAdapter(list, diaryItemDao, getActivity());
         recyclerView.setAdapter(diaryAdapter);
 
     }
 
     public void addItem(DiaryItem diaryItem) {
         diaryAdapter.addItem(diaryItem);
+    }
+    public void updateData() {
+        diaryAdapter.notifyDataSetChanged();
     }
 }
 

@@ -331,6 +331,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
                 break;
+            case 4:
+                mDiaryFragment.updateData();
+                break;
         }
 
     }

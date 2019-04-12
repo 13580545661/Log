@@ -10,31 +10,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".activity.EditDiaryActivity"></activity>
         <activity
             android:name=".activity.MainActivity"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.AboutActivity"
-            android:label="@string/ab_about"/>
-
+            android:label="@string/ab_about" />
         <activity
             android:name=".activity.SettingActivity"
-            android:label="@string/ab_setting"/>
-
+            android:label="@string/ab_setting" />
         <activity
             android:name=".activity.AddTodoActivity"
-            android:windowSoftInputMode="stateVisible"
-            android:theme="@style/ActivityDialogTheme"/>
-
+            android:theme="@style/ActivityDialogTheme"
+            android:windowSoftInputMode="stateVisible" />
         <activity android:name=".activity.AddDiaryActivity" />
     </application>
+
 </manifest>
