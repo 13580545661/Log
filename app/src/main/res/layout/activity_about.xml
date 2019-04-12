@@ -1,19 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.AboutActivity">
+    tools:context=".activity.AboutActivity"
+
+    >
 
     <include layout="@layout/toolbar_main" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="这里是关于界面"
-        android:textSize="16sp"
-        android:layout_centerInParent="true"/>
+        android:text="我们是谁？"
+        android:ellipsize="middle"
+        android:textSize="30dp"
+        android:textColor="@color/app_blue"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:ellipsize="middle"
+        android:textSize="10dp"
+        android:textColor="@color/app_blue"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我们是充满激情的团队"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我们有着共同的理念"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我们热爱技术"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我们名为ADT"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="我们就是 To Do List 精英团队"
+        android:textSize="20dp"
+        /> <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:textSize="40dp"
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To Do List 是什么？"
+        android:textSize="30dp"
+        android:textColor="@color/app_blue"
+    />
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:textSize="10dp"
+    />
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="To Do List 是一款集待办、日记、日历三大功能于一体的应用"
+    android:textSize="20dp"
+    />
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="您可以在这里记录下近期要做的事情"
+    android:textSize="20dp"
+    />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您可以在这里记录每天的心情"
+        android:textSize="20dp"
+        />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您可以在这里查询日历信息"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您可以我们希望得到您的支持和认可"
+        android:textSize="20dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="希望您给To Do List一个好评，让我们做得更好"
+        android:textSize="20dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="To Do List  Version 1.0.0"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:textColor="@color/app_blue"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
