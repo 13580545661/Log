@@ -29,6 +29,7 @@ public class EditDiaryActivity extends AppCompatActivity implements View.OnClick
     private DiaryItemDao diaryItemDao;
     private DiaryItem diaryItem;
     private List<DiaryItem> list = new ArrayList();
+    private int index;
 
     private Toolbar toolbar;
     private EditText editText;
@@ -59,6 +60,7 @@ public class EditDiaryActivity extends AppCompatActivity implements View.OnClick
 
         Intent intent = getIntent();
         long id = intent.getLongExtra("id", -1);
+        index = intent.getIntExtra("position", 0);
 
         list = diaryItemDao.queryBuilder().where(DiaryItemDao.Properties.Id.eq(id)).list();
         diaryItem = list.get(0);
@@ -74,6 +76,7 @@ public class EditDiaryActivity extends AppCompatActivity implements View.OnClick
         getSupportActionBar().setTitle(mYear + "年" + mMonth + "月" + mDay + "日");
         fab_add.setOnClickListener(this);
         fab_back.setOnClickListener(this);
+        fab_delete.setOnClickListener(this);
 
 
     }
@@ -119,8 +122,17 @@ public class EditDiaryActivity extends AppCompatActivity implements View.OnClick
                 diaryItemDao.update(diaryItem);
                 setResult(4);
                 finish();
+                break;
             case R.id.edit_diary_fab_back:
                 finish();
+                break;
+            case R.id.edit_diary_fab_delete:
+                diaryItemDao.delete(diaryItem);
+                Intent intent = new Intent();
+                intent.putExtra("position", index);
+                setResult(5, intent);
+                finish();
+                break;
         }
     }
 }

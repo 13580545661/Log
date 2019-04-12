@@ -334,6 +334,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case 4:
                 mDiaryFragment.updateData();
                 break;
+            case 5:
+                int index = data.getIntExtra("posistion", 0);
+                mDiaryFragment.removeItem(index);
         }
 
     }

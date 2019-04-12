@@ -86,6 +86,7 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
             public void onClick(View v) {
                 Intent intent = new Intent(context, EditDiaryActivity.class);
                 intent.putExtra("id", list.get(position).getId());
+                intent.putExtra("position", position);
                 context.startActivityForResult(intent, 0);
             }
         });
@@ -125,5 +126,10 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.ViewHolder> 
         list.add(0, diaryItem);
         diaryItemDao.insert(diaryItem);
         notifyItemInserted(0);
+    }
+
+    public void removeItem(int position) {
+        list.remove(position);
+        notifyItemRemoved(position);
     }
 }

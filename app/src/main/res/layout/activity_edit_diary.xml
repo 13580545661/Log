@@ -53,7 +53,8 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             app:maxImageSize="24dp"
-            app:fab_colorNormal="#e41c1c"
+            app:fab_colorNormal="@color/google_red"
+            app:fab_icon="@drawable/ic_delete_forever_black_24dp"
             />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -61,7 +62,7 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             app:maxImageSize="24dp"
-            app:fab_colorNormal="#e41c1c"
+            app:fab_colorNormal="@color/google_yellow"
             app:fab_icon="@drawable/baseline_clear_24" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
@@ -69,7 +70,7 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             app:maxImageSize="24dp"
-            app:fab_colorNormal="#24d63c"
+            app:fab_colorNormal="@color/google_green"
             app:fab_icon="@drawable/baseline_done_24"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>

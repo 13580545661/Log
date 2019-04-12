@@ -70,5 +70,8 @@ public class DiaryFragment extends Fragment {
     public void updateData() {
         diaryAdapter.notifyDataSetChanged();
     }
+    public void removeItem(int position) {
+        diaryAdapter.removeItem(position);
+    }
 }
 
