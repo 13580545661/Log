@@ -2,15 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorDefaultBackground"
+    android:layout_marginTop="6dp"
     android:elevation="6dp"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#9E9E9E"/>
+
 
     <LinearLayout
         android:orientation="horizontal"
@@ -37,17 +34,19 @@
             android:layout_marginEnd="8dp"
             android:layout_weight="2"
             android:text="确认"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/google_green"
             android:textColor="@color/white"
             />
         <!--<com.google.android.material.button.MaterialButton-->
-            <!--android:id="@+id/btn_add_todo"-->
             <!--android:layout_width="0dp"-->
             <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="2"-->
             <!--android:layout_marginTop="2.5dp"-->
             <!--android:layout_marginEnd="8dp"-->
-            <!--android:layout_weight="2"-->
-            <!--app:rippleColor="@color/colorAccent"-->
-            <!--app:strokeColor="@color/colorAccent"-->
+            <!--android:text="确认"-->
+            <!--android:textAppearance="?android:attr/textAppearanceButton"-->
+            <!--android:textColor="@color/white"-->
             <!--/>-->
 
     </LinearLayout>
